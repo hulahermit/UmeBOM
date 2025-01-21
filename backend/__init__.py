@@ -15,12 +15,13 @@ db.init_app(app)
 CORS(app, resources={r"/*": {"origins": "*"}})  # Update this line to handle CORS
 
 with app.app_context():
-    from .bluprints import main_bp, item_bp, bom_bp
+    from .bluprints import main_bp, item_bp, bom_bp, user_bp
     db.create_all()
 
 app.register_blueprint(main_bp)
 app.register_blueprint(item_bp)
 app.register_blueprint(bom_bp)
+app.register_blueprint(user_bp)
 
 if os.getenv('DEBUG'):
     print('Debug mode!!')
